@@ -121,12 +121,22 @@
       });
       // Add vote listeners
       document.querySelectorAll('.vote-btn').forEach(btn => {
+        const id = btn.getAttribute('data-id');
+        const votedKey = `voted_${id}`;
+        if (localStorage.getItem(votedKey)) {
+          btn.disabled = true;
+          btn.textContent = "Already Voted";
+        }
+
         btn.addEventListener('click', function() {
-          const id = this.getAttribute('data-id');
-          let votes = getVotes(id);
-          votes++;
-          setVotes(id, votes);
-          this.textContent = `+1 (${votes})`;
+          if (!localStorage.getItem(votedKey)) {
+            let currentVotes = getVotes(id);
+            currentVotes++;
+            setVotes(id, currentVotes);
+            localStorage.setItem(votedKey, "true");
+            this.textContent = `+1 (${currentVotes})`;
+            this.disabled = true;
+          }
         });
       });
     }
