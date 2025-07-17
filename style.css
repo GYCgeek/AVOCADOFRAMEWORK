@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
+
+:root {
+  --avocado-green: #8BA888;
+  --soft-beige: #F4F3ED;
+  --dark-green: #1C3927;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'DM Sans', Arial, sans-serif;
+  background: var(--soft-beige);
+  color: var(--dark-green);
+  min-height: 100vh;
+}
+
+.feedback-badge {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: var(--avocado-green);
+  color: var(--soft-beige);
+  padding: 0.6em 1.2em;
+  border-radius: 2em;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(28, 57, 39, 0.08);
+  z-index: 1000;
+  font-size: 1rem;
+}
+
+.hero {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1rem 3rem 1rem;
+}
+
+.hero h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--dark-green);
+}
+
+.subheadline {
+  font-size: 1.1rem;
+  color: var(--avocado-green);
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.hero-btn {
+  display: inline-block;
+  background: var(--avocado-green);
+  color: var(--soft-beige);
+  padding: 0.9em 2.2em;
+  border: none;
+  border-radius: 2em;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(28, 57, 39, 0.08);
+  cursor: pointer;
+}
+.hero-btn:hover, .hero-btn:focus {
+  background: var(--dark-green);
+  color: var(--soft-beige);
+}
+
+/* Card Styles */
+.card {
+  background: var(--soft-beige);
+  border: 1px solid var(--avocado-green);
+  border-radius: 1.2em;
+  box-shadow: 0 2px 8px rgba(28, 57, 39, 0.06);
+  padding: 1.5rem;
+  margin: 1rem 0;
+}
+
+/* Footer */
+footer {
+  background: var(--dark-green);
+  color: var(--soft-beige);
+  padding: 1.2rem 0;
+  text-align: center;
+  margin-top: auto;
+}
+.footer-links a {
+  color: var(--soft-beige);
+  text-decoration: none;
+  margin: 0 0.5em;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.footer-links a:hover, .footer-links a:focus {
+  color: var(--avocado-green);
+}
+
+/* Responsive Flex Containers */
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Responsive Design */
+@media (min-width: 600px) {
+  .hero h1 {
+    font-size: 3.2rem;
+  }
+  .subheadline {
+    font-size: 1.3rem;
+  }
+  .card {
+    padding: 2.5rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .hero {
+    padding: 4rem 1rem 5rem 1rem;
+  }
+  .flex-row {
+    gap: 2.5rem;
+  }
+  .flex-col {
+    gap: 2.5rem;
+  }
+} 

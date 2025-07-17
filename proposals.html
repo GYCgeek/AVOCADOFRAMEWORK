@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seed Wall – Public Proposals</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .seed-wall {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    .proposal-card {
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .vote-btn {
+      background: var(--avocado-green);
+      color: var(--soft-beige);
+      border: none;
+      border-radius: 1.2em;
+      padding: 0.4em 1.2em;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 1em;
+      transition: background 0.2s;
+    }
+    .vote-btn:active {
+      background: var(--dark-green);
+    }
+    .proposal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5em;
+    }
+    .proposal-meta {
+      font-size: 0.95em;
+      color: var(--avocado-green);
+      margin-bottom: 0.5em;
+    }
+    .status {
+      font-size: 0.95em;
+      font-weight: 600;
+      color: var(--dark-green);
+      background: #e6f2e6;
+      border-radius: 0.7em;
+      padding: 0.2em 0.8em;
+      display: inline-block;
+      margin-top: 0.5em;
+    }
+    .filter-bar {
+      margin-bottom: 2rem;
+      display: flex;
+      gap: 1em;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <main class="seed-wall">
+    <h1>Seed Wall</h1>
+    <div class="filter-bar">
+      <label for="pillar-filter">Filter by Pillar:</label>
+      <select id="pillar-filter">
+        <option value="all">All</option>
+        <option value="CET">Clean Energy Transition (CET)</option>
+        <option value="NBS">Nature-Based Solutions (NBS)</option>
+        <option value="LD">Loss & Damage (LD)</option>
+        <option value="General">General</option>
+      </select>
+    </div>
+    <div id="proposals-list"></div>
+  </main>
+  <script>
+    // Emoji map for type
+    const typeEmojis = {
+      'Suggestion': '💡',
+      'Disagreement': '⚠️',
+      'Edit': '✏️',
+      'Reference': '🔗',
+      'Case Study': '📚'
+    };
+
+    // Load proposals.json and render
+    let proposalsData = [];
+    fetch('proposals.json')
+      .then(res => res.json())
+      .then(data => {
+        proposalsData = data;
+        renderProposals(data);
+      });
+
+    // Render proposals
+    function renderProposals(data) {
+      const list = document.getElementById('proposals-list');
+      list.innerHTML = '';
+      if (!data.length) {
+        list.innerHTML = '<p>No proposals found.</p>';
+        return;
+      }
+      data.forEach(proposal => {
+        const votes = getVotes(proposal.id, proposal.votes);
+        const card = document.createElement('div');
+        card.className = 'card proposal-card';
+        card.innerHTML = `
+          <div class="proposal-header">
+            <span><strong>${proposal.pillar}</strong></span>
+            <span title="${proposal.type}">${typeEmojis[proposal.type] || ''}</span>
+          </div>
+          <div class="proposal-meta">
+            <span>${proposal.contributor}</span> &bull; <span>${proposal.date}</span>
+          </div>
+          <div class="proposal-text">${proposal.text}</div>
+          <div class="status">${proposal.status}</div>
+          <button class="vote-btn" data-id="${proposal.id}">+1 (${votes})</button>
+        `;
+        list.appendChild(card);
+      });
+      // Add vote listeners
+      document.querySelectorAll('.vote-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const id = this.getAttribute('data-id');
+          let votes = getVotes(id);
+          votes++;
+          setVotes(id, votes);
+          this.textContent = `+1 (${votes})`;
+        });
+      });
+    }
+
+    // Voting with localStorage
+    function getVotes(id, defaultVotes = 0) {
+      const stored = localStorage.getItem('votes_' + id);
+      return stored ? parseInt(stored, 10) : defaultVotes;
+    }
+    function setVotes(id, votes) {
+      localStorage.setItem('votes_' + id, votes);
+    }
+
+    // Filter by pillar
+    document.getElementById('pillar-filter').addEventListener('change', function() {
+      const val = this.value;
+      if (val === 'all') {
+        renderProposals(proposalsData);
+      } else {
+        renderProposals(proposalsData.filter(p => p.pillar === val));
+      }
+    });
+  </script>
+</body>
+</html> 

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit a Seed – The Living Avocado</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // On DOM load, set the pillar dropdown based on URL param
+    document.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const pillar = urlParams.get('pillar');
+      if (pillar) {
+        const select = document.getElementById('pillar');
+        if (select) select.value = pillar;
+      }
+    });
+  </script>
+</head>
+<body>
+  <main style="max-width: 500px; margin: 0 auto; padding: 2rem 1rem;">
+    <h1>Submit a Seed</h1>
+    <form action="https://formspree.io/f/yourID" method="POST" enctype="multipart/form-data" onsubmit="window.location.href='thanks.html'; return false;">
+      <label for="name">Name (optional)</label>
+      <input type="text" id="name" name="name" placeholder="Your name">
+
+      <label for="email">Email (optional)</label>
+      <input type="email" id="email" name="email" placeholder="you@email.com">
+
+      <label for="who">Who are you?</label>
+      <select id="who" name="who" required>
+        <option value="" disabled selected>Select...</option>
+        <option value="youth">Youth</option>
+        <option value="educator">Educator</option>
+        <option value="policy-maker">Policy Maker</option>
+        <option value="researcher">Researcher</option>
+        <option value="community-member">Community Member</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="pillar">What pillar?</label>
+      <select id="pillar" name="pillar" required>
+        <option value="" disabled selected>Select...</option>
+        <option value="cet">Clean Energy Transition (CET)</option>
+        <option value="nbs">Nature-Based Solutions (NBS)</option>
+        <option value="ld">Loss & Damage (LD)</option>
+        <option value="general">General</option>
+      </select>
+
+      <label for="type">What type of feedback?</label>
+      <select id="type" name="type" required>
+        <option value="" disabled selected>Select...</option>
+        <option value="suggestion">Suggestion</option>
+        <option value="disagreement">Disagreement</option>
+        <option value="edit">Edit</option>
+        <option value="reference">Reference</option>
+        <option value="case-study">Case Study</option>
+      </select>
+
+      <label for="contribution">Contribution</label>
+      <textarea id="contribution" name="contribution" rows="6" required placeholder="Describe your idea, feedback, or contribution..."></textarea>
+
+      <label for="file">Optional file upload</label>
+      <input type="file" id="file" name="file">
+
+      <button class="hero-btn" type="submit" style="margin-top:1.5em; width:100%;">Submit Seed</button>
+    </form>
+  </main>
+</body>
+</html>

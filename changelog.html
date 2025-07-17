@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Changelog – The Living Avocado</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .changelog-table {
+      width: 100%;
+      max-width: 800px;
+      margin: 2rem auto;
+      border-collapse: collapse;
+      background: var(--soft-beige);
+      box-shadow: 0 2px 8px rgba(28, 57, 39, 0.06);
+      border-radius: 1em;
+      overflow: hidden;
+    }
+    .changelog-table th, .changelog-table td {
+      padding: 1em 1.2em;
+      text-align: left;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .changelog-table th {
+      background: var(--avocado-green);
+      color: var(--soft-beige);
+      font-weight: 700;
+    }
+    .changelog-table tr:last-child td {
+      border-bottom: none;
+    }
+    .update-list {
+      margin: 0;
+      padding-left: 1.2em;
+    }
+    .update-list li {
+      margin-bottom: 0.3em;
+    }
+    @media (max-width: 600px) {
+      .changelog-table th, .changelog-table td {
+        padding: 0.7em 0.5em;
+        font-size: 0.98em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 style="text-align:center; margin-top:2rem;">Changelog</h1>
+    <table class="changelog-table">
+      <thead>
+        <tr>
+          <th>Version</th>
+          <th>Date</th>
+          <th>Updates</th>
+        </tr>
+      </thead>
+      <tbody id="changelog-body">
+        <!-- Populated by JS -->
+      </tbody>
+    </table>
+  </main>
+  <script>
+    fetch('changelog.json')
+      .then(res => res.json())
+      .then(data => renderChangelog(data));
+
+    function renderChangelog(data) {
+      const body = document.getElementById('changelog-body');
+      body.innerHTML = '';
+      if (!data.length) {
+        body.innerHTML = '<tr><td colspan="3">No changelog entries found.</td></tr>';
+        return;
+      }
+      data.forEach(entry => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${entry.version}</strong></td>
+          <td>${entry.date}</td>
+          <td>
+            <ul class="update-list">
+              ${entry.updates.map(update => `<li>${update}</li>`).join('')}
+            </ul>
+          </td>
+        `;
+        body.appendChild(tr);
+      });
+    }
+  </script>
+</body>
+</html> 
