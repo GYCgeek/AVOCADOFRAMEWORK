@@ -1,7 +1,7 @@
 // submitSeed.js
 
 document.addEventListener('DOMContentLoaded', function () {
-  const form = document.querySelector('form');
+  const form = document.querySelector('#seedForm');
   if (!form) return;
 
   form.addEventListener('submit', async function (e) {
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const REPO = 'GYCgeek/AVOCADOFRAMEWORK';
     const FILE_PATH = 'public/data/proposals.json';
     const BRANCH = 'main';
-    const API_URL = `https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`;
+    const API_URL = `https://api.github.com/repos/GYCgeek/AVOCADOFRAMEWORK/contents/public/data/proposals.json`;
 
     try {
       // 1. Fetch proposals.json from GitHub
