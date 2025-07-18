@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('Formatted proposal:', newProposal);
 
     // --- GitHub API integration ---
-    const GITHUB_TOKEN = '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'; // Insert your token locally
+    const GITHUB_TOKEN = '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'; // Insert your token locally
     const REPO = 'GYCgeek/AVOCADOFRAMEWORK';
     const FILE_PATH = 'public/data/proposals.json';
     const BRANCH = 'main';
