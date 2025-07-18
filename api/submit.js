@@ -1,45 +1,70 @@
-import { writeFileSync, readFileSync } from 'fs';
-import path from 'path';
+// api/submit.js
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Only POST requests allowed' });
+    return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
+  const { GITHUB_TOKEN } = process.env;
+  const REPO = 'GYCgeek/AVOCADOFRAMEWORK';
+  const FILE_PATH = 'public/data/proposals.json';
+  const BRANCH = 'main';
+  const API_URL = `https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`;
+
+  const newProposal = req.body;
+
   try {
-    const { name, email, who, pillar, type, description } = req.body;
+    // 1. Fetch proposals.json
+    const getRes = await fetch(`${API_URL}?ref=${BRANCH}`, {
+      headers: {
+        Authorization: `token ${GITHUB_TOKEN}`,
+        Accept: 'application/vnd.github.v3+json'
+      }
+    });
 
-    const today = new Date();
-    const dateStr = today.toISOString().slice(0, 10);
-    const contributor = name ? `${name}${email ? ' (' + email + ')' : ''}` : who;
+    if (!getRes.ok) {
+      const errText = await getRes.text();
+      throw new Error(`GET failed: ${errText}`);
+    }
 
-    const newProposal = {
-      id: null,
-      pillar: pillar.toUpperCase(),
-      type: type.charAt(0).toUpperCase() + type.slice(1),
-      text: description,
-      contributor,
-      status: 'Under Review',
-      date: dateStr,
-      votes: 0,
-    };
+    const fileData = await getRes.json();
+    const content = Buffer.from(fileData.content, 'base64').toString('utf8');
+    const proposals = JSON.parse(content);
 
-    const filePath = path.join(process.cwd(), 'public', 'data', 'proposals.json');
-    const fileContent = readFileSync(filePath, 'utf-8');
-    const proposals = JSON.parse(fileContent);
-
-    // Set ID
+    // 2. Assign ID
     const lastId = proposals.length ? Math.max(...proposals.map(p => p.id)) : 0;
     newProposal.id = lastId + 1;
 
-    // Append and write back
+    // 3. Add proposal
     proposals.push(newProposal);
-    writeFileSync(filePath, JSON.stringify(proposals, null, 2));
 
-    res.status(200).json({ success: true, proposal: newProposal });
-  } catch (error) {
-    console.error('Submit error:', error);
-    res.status(500).json({ message: 'Error saving proposal' });
+    // 4. Convert to base64
+    const updatedContent = Buffer.from(JSON.stringify(proposals, null, 2)).toString('base64');
+
+    // 5. PUT updated file
+    const putRes = await fetch(API_URL, {
+      method: 'PUT',
+      headers: {
+        Authorization: `token ${GITHUB_TOKEN}`,
+        Accept: 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: `Add Seed #${newProposal.id} from ${newProposal.contributor}`,
+        content: updatedContent,
+        sha: fileData.sha,
+        branch: BRANCH
+      })
+    });
+
+    if (!putRes.ok) {
+      const errText = await putRes.text();
+      throw new Error(`PUT failed: ${errText}`);
+    }
+
+    return res.status(200).json({ success: true, id: newProposal.id });
+  } catch (err) {
+    console.error('API error:', err);
+    return res.status(500).json({ error: 'Internal Server Error', detail: err.message });
   }
 }
-
