@@ -83,7 +83,7 @@
     </nav>
   </footer>
   <script>
-    fetch('data/changelog.json')
+    fetch('/data/changelog.json')
       .then(res => res.json())
       .then(data => renderChangelog(data));
 
