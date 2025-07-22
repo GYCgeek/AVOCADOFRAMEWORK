@@ -1,4 +1,89 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=League+Spartan:wght@700&family=Arimo:wght@700&display=swap');
+
+/* Impact font fallback */
+@font-face {
+  font-family: 'Impact', Impact, Charcoal, sans-serif;
+  font-weight: bold;
+}
+
+/* Title Styles */
+h1, h3 {
+  font-family: 'Impact', Impact, Charcoal, sans-serif;
+  color: #F43A1B;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+h2 {
+  font-family: 'League Spartan', 'DM Sans', Arial, sans-serif;
+  color: #F43A1B;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Subtitle Styles */
+.subheadline,
+.card h2,
+.aboutus-container h2 {
+  font-family: 'League Spartan', 'DM Sans', Arial, sans-serif;
+  color: var(--avocado-green);
+  text-transform: capitalize;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+/* Button Row for Homepage */
+.button-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1.2em;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* Nav/Menu Button */
+.menu-btn, .home-btn {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  background: #3f2b17;
+  color: #fff;
+  border: none;
+  border-radius: 2em;
+  padding: 0.6em 1.5em;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 1001;
+  box-shadow: 0 2px 8px rgba(28, 57, 39, 0.08);
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.menu-btn:hover, .home-btn:hover {
+  background: var(--dark-green);
+}
+
+/* Translation Button */
+.translate-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: #fff;
+  color: var(--dark-green);
+  border: 1px solid var(--avocado-green);
+  border-radius: 2em;
+  padding: 0.5em 1.2em;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 1002;
+  box-shadow: 0 2px 8px rgba(28, 57, 39, 0.08);
+  transition: background 0.2s;
+}
+.translate-btn:hover {
+  background: var(--avocado-green);
+  color: var(--soft-beige);
+}
 
 :root {
   --avocado-green: #8BA888;
@@ -12,6 +97,8 @@ html, body {
   font-family: 'DM Sans', Arial, sans-serif;
   background: var(--soft-beige);
   color: var(--dark-green);
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
 }
 
@@ -19,7 +106,7 @@ html, body {
   position: fixed;
   top: 1.5rem;
   right: 1.5rem;
-  background: var(--avocado-green);
+  background: #3f2b17;
   color: var(--soft-beige);
   padding: 0.6em 1.2em;
   border-radius: 2em;
@@ -55,8 +142,8 @@ html, body {
 
 .hero-btn {
   display: inline-block;
-  background: var(--avocado-green);
-  color: var(--soft-beige);
+  background: #3f2b17;
+  color: #fff;
   padding: 0.9em 2.2em;
   border: none;
   border-radius: 2em;
@@ -135,5 +222,64 @@ footer {
   }
   .flex-col {
     gap: 2.5rem;
+  }
+}
+
+/* Arimo font for Seed Wall and related buttons */
+.arimo-btn, .hero-btn.seed-wall-btn {
+  font-family: 'Arimo', Arial, sans-serif !important;
+}
+
+.page-wrapper {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 600px) {
+  .hero h1, h1 {
+    font-size: 1.5rem !important;
+  }
+  h2 {
+    font-size: 1.1rem !important;
+  }
+  .subheadline {
+    font-size: 1rem !important;
+  }
+  .aboutus-container, .seed-wall, .thanks-container, main {
+    padding: 0.5rem !important;
+  }
+  .button-row {
+    flex-direction: column;
+    gap: 0.7em;
+    margin-top: 1rem;
+  }
+  .hero-btn, .home-btn, .menu-btn {
+    font-size: 1rem;
+    padding: 0.7em 1.2em;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .home-btn, .menu-btn {
+    top: 0.5rem;
+    left: 0.5rem;
+  }
+  .footer-links {
+    flex-direction: column;
+    gap: 0.5em;
+    font-size: 1rem;
+  }
+  footer {
+    padding: 0.7rem 0 0.7rem 0.5rem;
+    text-align: left;
+    position: relative;
+  }
+  footer > a {
+    position: static !important;
+    display: block;
+    margin-bottom: 0.5em;
+  }
+  .translate-btn, .feedback-badge {
+    display: none !important;
   }
 } 
