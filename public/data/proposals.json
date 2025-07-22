@@ -18,5 +18,15 @@
     "status": "Under Review",
     "date": "2025-07-18",
     "votes": 0
+  },
+  {
+    "id": 3,
+    "pillar": "NBS",
+    "type": "Suggestion",
+    "text": "Outline baseline data to benchmark NBS & hectors of land restored to showcase measurable growth coming out of the implementation of these suggestions. Partner with UNEP/UNEP-WCMC to establish baseline",
+    "contributor": "Kathleen Arthur  (whattodayfeelslike@gmail.com)",
+    "status": "Under Review",
+    "date": "2025-07-22",
+    "votes": 0
   }
 ]
