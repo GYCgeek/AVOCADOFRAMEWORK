@@ -239,6 +239,7 @@ footer {
 @media (max-width: 600px) {
   .hero h1, h1 {
     font-size: 1.5rem !important;
+    margin-top: 2.5rem !important;
   }
   h2 {
     font-size: 1.1rem !important;
@@ -248,6 +249,7 @@ footer {
   }
   .aboutus-container, .seed-wall, .thanks-container, main {
     padding: 0.5rem !important;
+    margin-top: 2.5rem !important;
   }
   .button-row {
     flex-direction: column;
