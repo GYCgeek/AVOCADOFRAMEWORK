@@ -7,11 +7,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <a href="index.html" class="home-btn" title="Back to Home">🥑</a>
+    <br><br> <br><br>
     <main class="aboutus-container">
-        <h1>🥑 About the Avocado Framework (AF)</h1>
+        <h1 style="text-transform: uppercase; font-family: 'Impact', Impact, Charcoal, sans-serif; color: #F43A1B; letter-spacing: 0.04em;">About the Avocado Framework (AF)</h1>
         <p>The Avocado Framework is a youth-led climate strategy to turn global negotiations into real action. Born from the Global Youth Coalition and guided by voices from over 178 countries, it is a living, evolving blueprint for planetary transformation — from the grassroots to the global stage. Today, AF belongs to everyone building a livable future.</p>
 
-        <h2>We believe change must happen at every level:</h2>
+        <h2 class="subheadline">We believe change must happen at every level:</h2>
         <ul>
             <li><strong>The Seed</strong> (individuals & communities)</li>
             <li><strong>The Flesh</strong> (businesses & civil society)</li>
@@ -19,14 +21,14 @@
         </ul>
         <p>All wrapped around the avocado itself — our living planet.</p>
 
-        <h2>Our work is structured through 🔱 The Trident:</h2>
+        <h2 class="subheadline">Our work is structured through 🔱 The Trident:</h2>
         <ul>
             <li><strong>Clean Energy Transition (CET)</strong> – A just shift from fossil fuels.</li>
             <li><strong>Nature-Based Solutions (NBS)</strong> – Protecting ecosystems with Indigenous and local leadership.</li>
             <li><strong>Loss & Damage (LD)</strong> – Ensuring fair repair for the communities already affected.</li>
         </ul>
 
-        <h2>Unlike static reports, the bottom up Avocado Framework is:</h2>
+        <h2 class="subheadline">Unlike static reports, the bottom up Avocado Framework is:</h2>
         <ul>
             <li><strong>Living</strong> – open to public contributions via our Seed Wall</li>
             <li><strong>Practical</strong> – connected to real-world implementation</li>
@@ -35,5 +37,21 @@
 
         <p>Whether you're a negotiator, student, policymaker, or curious human — this is your invitation to co-create the future.</p>
     </main>
+    <button class="translate-btn" id="google_translate_element">🌐 Translate</button>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+      }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <footer>
+      <a href="https://theglobalyouth.co/avocado" target="_blank" rel="noopener noreferrer" style="position: absolute; left: 1.5rem; bottom: 1.5rem; color: #fff; font-family: 'Impact', Impact, Charcoal, sans-serif; font-size: 1.1rem; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; z-index: 10;">AVOCADO FRAMEWORK</a>
+      <nav class="footer-links">
+        <a href="aboutus.html">About</a> |
+        <a href="changelog.html">Changelog</a> |
+        <a href="proposals.html">Seed Wall</a> |
+        <a href="feedback.html">Contact</a>
+      </nav>
+    </footer>
 </body>
 </html> 
