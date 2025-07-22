@@ -60,20 +60,32 @@
   </style>
 </head>
 <body>
-  <main class="seed-wall">
-    <h1>Seed Wall</h1>
-    <div class="filter-bar">
-      <label for="pillar-filter">Filter by Pillar:</label>
-      <select id="pillar-filter">
-        <option value="all">All</option>
-        <option value="CET">Clean Energy Transition (CET)</option>
-        <option value="NBS">Nature-Based Solutions (NBS)</option>
-        <option value="LD">Loss & Damage (LD)</option>
-        <option value="General">General</option>
-      </select>
-    </div>
-    <div id="proposals-list"></div>
-  </main>
+  <a href="index.html" class="home-btn" title="Back to Home">🥑</a>
+  <div class="page-wrapper">
+    <main class="seed-wall">
+      <h1>Seed Wall</h1>
+      <div class="filter-bar">
+        <label for="pillar-filter">Filter by Pillar:</label>
+        <select id="pillar-filter">
+          <option value="all">All</option>
+          <option value="CET">Clean Energy Transition (CET)</option>
+          <option value="NBS">Nature-Based Solutions (NBS)</option>
+          <option value="LD">Loss & Damage (LD)</option>
+          <option value="General">General</option>
+        </select>
+      </div>
+      <div id="proposals-list"></div>
+    </main>
+  </div>
+  <footer>
+    <a href="https://theglobalyouth.co/avocado" target="_blank" rel="noopener noreferrer" style="position: absolute; left: 1.5rem; bottom: 1.5rem; color: #fff; font-family: 'Impact', Impact, Charcoal, sans-serif; font-size: 1.1rem; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; z-index: 10;">AVOCADO FRAMEWORK</a>
+    <nav class="footer-links">
+      <a href="aboutus.html">About</a> |
+      <a href="changelog.html">Changelog</a> |
+      <a href="proposals.html">Seed Wall</a> |
+      <a href="feedback.html">Contact</a>
+    </nav>
+  </footer>
   <script>
     // Emoji map for type
     const typeEmojis = {
@@ -115,7 +127,7 @@
           </div>
           <div class="proposal-text">${proposal.text}</div>
           <div class="status">${proposal.status}</div>
-          <button class="vote-btn" data-id="${proposal.id}">+1 (${votes})</button>
+          <button class="vote-btn arimo-btn" data-id="${proposal.id}">+1 (${votes})</button>
         `;
         list.appendChild(card);
       });
