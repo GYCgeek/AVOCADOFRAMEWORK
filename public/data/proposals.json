@@ -38,5 +38,15 @@
     "status": "Under Review",
     "date": "2025-07-22",
     "votes": 0
+  },
+  {
+    "id": 5,
+    "pillar": "LD",
+    "type": "Case-study",
+    "text": "Evidence of Loss and Damage in Tanzania",
+    "contributor": "Upendo Ernest Lyimo (upendolyimo@gmail.com)",
+    "status": "Under Review",
+    "date": "2025-07-24",
+    "votes": 0
   }
 ]
