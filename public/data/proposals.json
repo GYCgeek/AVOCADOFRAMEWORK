@@ -58,5 +58,15 @@
     "status": "Under Review",
     "date": "2025-07-24",
     "votes": 0
+  },
+  {
+    "id": 7,
+    "pillar": "CET",
+    "type": "Suggestion",
+    "text": "What is decided in the GST Para 28 text is already agreed upon and will to my knowledge not be negotiated until the next GST? From my understanding the first segment is just a clarification of how the text from the para 28 is used into the JTWP text, but I found this a bit confusing. \n\nHence, I think we need to make a clearer link between the first part referencing para 28 from the GST and the fact that the language proposals made are referring to the JTWP Informal note. \n\nPerhaps just with a clarifying sentence under \n“Negotiation reference- SB62 Informal note - Just Transition Work Programme.” \nText suggestion: \nThe following language proposals regard this Informal note. \n\nAdditionally, there needs to be a reference indicating where the first “Original text” under “Key language proposal (based on paragraph 28)” is from - like it is done for the language proposals later on. Which para is it from? \n\nLast part of the first proposed revision - “consistent with local and intergenerational equity” - is this a part of the original text? It is not a part of the original text above. Should this then be marked red to indicate it is a proposal? Or is it just missing from the original text para? \n",
+    "contributor": "Amalie Holmefjord",
+    "status": "Under Review",
+    "date": "2025-07-24",
+    "votes": 0
   }
 ]
