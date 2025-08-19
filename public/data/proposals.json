@@ -178,5 +178,15 @@
     "status": "Under Review",
     "date": "2025-08-19",
     "votes": 0
+  },
+  {
+    "id": 19,
+    "pillar": "CET",
+    "type": "Edit",
+    "text": "Regarding the sections not highlighted in the document: c, e, g\n\n28.c\noriginal: \"well before or by around mid-century\"\nedit: \"starting immediately and showing significant commitment by 2030\"\n\n28.e\noriginal: \"removal technologies such as carbon capture and\nutilization and storage\"\nedit: \"removal technologies such as carbon capture and\nutilization and storage (CCUS), favoring CCUS and Carbon Removing Certificates to Carbon Offsets and Carbon Credits or Allowances\"\n\n28.g\noriginal: \" including through development of infrastructure\"\nedit: \" including through development of infrastructure, including such for public transportation\"",
+    "contributor": "Marilyn Mabel Gilbert (marilynmabel.gilbert@gmail.com)",
+    "status": "Under Review",
+    "date": "2025-08-19",
+    "votes": 0
   }
 ]
