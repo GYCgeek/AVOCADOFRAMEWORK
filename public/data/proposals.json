@@ -168,5 +168,15 @@
     "status": "Under Review",
     "date": "2025-08-16",
     "votes": 0
+  },
+  {
+    "id": 18,
+    "pillar": "CET",
+    "type": "Edit",
+    "text": "Regarding the paragraphs highlighted in the document: b, d, h\n\n28.b\noriginal: \"the phase-down of unabated coal power\"\nedit: \" the phase-down of all unabated fossil fuels, such as coal power\"\n\n28.d\noriginal: \"just, orderly and\nequitable manner\"\nedit: \"just, orderly,\nequitable and inclusive manner\"\n\n28.h\noriginal: \"subsidies\"\nedit: \"subsidies and tax exemptions\" ",
+    "contributor": "Marilyn Mabel Gilbert (marilynmabel.gilbert@gmail.com)",
+    "status": "Under Review",
+    "date": "2025-08-19",
+    "votes": 0
   }
 ]
